@@ -300,7 +300,7 @@ const handleChange = (event) => {
 
 const handleSubmit = (event) => {
   event.preventDefault()
-  props.addTodo()
+  props.addTodo(props.todoState.newTodo)
 }
 ```
 
