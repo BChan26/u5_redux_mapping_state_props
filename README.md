@@ -66,7 +66,7 @@ You may see this function called `mapDispatchToProps` in certain posts and tutor
 
 Now we need to add one final thing to finish our setup. We need to `connect` our `TodoList` component to Redux.
 
-Import the `connect` function from `react-redux`, use desructuring syntax for this:
+Import the `connect` function from `react-redux`, use destructuring syntax for this:
 
 ```js
 import { connect } from 'react-redux'
