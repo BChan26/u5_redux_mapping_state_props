@@ -320,7 +320,7 @@ One small problem here: our form field is never being cleared out. Let's fix thi
 
 The field should now be cleared every time we add a new todo!
 
-<details><summary><strong>Here's the final `TodoList` component:</strong></summary>
+<details><summary><strong>Here's the final TodoList component:</strong></summary>
   
 ```js
 import React from 'react'
@@ -378,7 +378,7 @@ export default connect(mapStateToProps, mapActionsToProps)(TodoList)
 
 </details>
 
-<details><summary><strong>Heres the final `TodoReducer`:</strong></summary>
+<details><summary><strong>Heres the final TodoReducer:</strong></summary>
   
 ```js
 import { ADD_TODO, NEW_TODO, REMOVE_TODO } from '../types'
