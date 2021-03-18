@@ -1,32 +1,25 @@
-# Mapping State and Actions To Props
+# Mapping State & Actions to Props
+
+![Leather Bound Books](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FerldqIniuBYo8%2Fgiphy.gif&f=1&nofb=1)
+
+## Overview
+In this lesson, we'll continue working on our ToDo list and learn how we can map our state and actions to our props. Make sure you have the first 3 parts of the ToDo list working before we begin.
+
+## Objectives
+- Attach our actions and reducers to components
+- Perform state updates with our actions
+- Connect our components to our Redux store
 
 <img height="400" src="https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif" alt="redux">
 
-### Requirements
+## Instructions
+At this point we've successfully created `reducers`, `types`, `actions`, and linked our `store` to our React app via the react-redux `Provider` component. Let's add the final piece to our puzzle: utilizing our store and actions.
 
-- Have part 3 of the todo list working
+### Linking Components to the Redux Store
 
-## Objectives
+Start by creating a `components` folder in your `src` directory.  In that folder, create two files: `TodoList.js` and `TodoForm.js`.
 
-- Attach our actions and reducers to components.
-
-- Perform state updates with our actions.
-
-- Connect our components to our redux store.
-
-## Recap
-
-At this point we've successfully created `reducers`, `types`, `actions`, linked our `store` to our react app via the react-redux `Provider` component. Let's add the final piece to our puzzle, utilizing our store and actions.
-
-## Creating A Todo List
-
-### Linking Components To The Redux Store
-
-Start by creating a `components` folder in your `src` directory.
-
-In that folder create two files, `TodoList.js` and `TodoForm.js`.
-
-Open your `TodoList.js`, let's make a functional react component:
+Open your `TodoList.js` and let's make a functional React component:
 
 ```jsx
 import React from 'react'
@@ -38,15 +31,14 @@ const TodoList = () => {
 export default TodoList
 ```
 
-Now in order to use our Redux `store`, we need to accept the information as props. Unfortunately it's not as easy as just adding props to the function argument. We'll need to do a couple of things first:
-
+Now, in order to use our Redux `store`, we need to accept the information as props. Unfortunately, it's not as easy as just adding props to the function argument. We'll need to do a couple of things first:
 - Map Our State to Props
 - Map Our Actions to Props
 - `Connect` our component to Redux
 
-Notice the wording in the above list, it's done purposely. These are exactly what we're going to create and import in our `TodoList` component.
+Notice the wording in the above list. It's done purposefully. These are exactly what we're going to create and import in our `TodoList` component.
 
-Start by creating a `mapStateToProps` function. It should accept state as an argument and return an empty object for the time being, add it above the export statement:
+Start by creating a `mapStateToProps` function. It should accept state as an argument and return an empty object for now. Add it above the export statement:
 
 ```js
 const mapStateToProps = (state) => {
@@ -54,9 +46,9 @@ const mapStateToProps = (state) => {
 }
 ```
 
-Add a `console.log` inside of that function above the `return`. And log `state`.
+Add a `console.log` inside of that function above the `return`. Log `state`.
 
-Now create a `mapActionsToProps` function, it should accept `dispatch` as an argument, have it return an empty object for the time being:
+Now, create a `mapActionsToProps` function. It should accept `dispatch` as an argument. Have it return an empty object for now:
 
 ```js
 const mapActionsToProps = (dispatch) => {
@@ -64,26 +56,29 @@ const mapActionsToProps = (dispatch) => {
 }
 ```
 
-You may see this function called `mapDispatchToProps` in certain posts and tutorials online, the names of these functions don't matter, what does matter is what they return.
+![Glass Case of Emotion](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FFSnwQf1mPhN2o%2Fgiphy.gif&f=1&nofb=1)
 
-Now we need to add one final thing to finish our setup. We need to `connect` our `TodoList` component to Redux.
+You may see this function called `mapDispatchToProps` in certain posts and tutorials online. The names of these functions don't matter, but what does matter is what they return.
 
-Import the `connect` function from `react-redux`, use destructuring syntax for this:
+Now, we need to add one final thing to finish our setup. We need to `connect` our `TodoList` component to Redux.
+
+Import the `connect` function from `react-redux`. Use destructuring syntax for this:
 
 ```js
 import { connect } from 'react-redux'
 ```
 
-Let's connect our component now, where we export our `TodoList` invoke the `connect` function, and wrap the `TodoList` in parentheses:
+Let's connect our component now. Where we export our `TodoList`, invoke the `connect` function and wrap the `TodoList` in parentheses:
 
 ```js
 export default connect()(TodoList)
 ```
 
-Connect accepts two arguments, the order matters here! The first argument the function we're using to read the state from redux, in this case, `mapStateToProps`.
-The second argument being any actions that we want to connect to redux, in this case `mapActionsToProps`.
+Connect accepts two arguments, and the order matters here!
+  1. The first argument is the function we're using to read the state from Redux. In this case: `mapStateToProps`.
+  2. The second argument is any actions that we want to connect to Redux. In this case: `mapActionsToProps`.
 
-We do not invoke the functions, simply passing them in will work.
+We do not invoke the functions. Simply passing them in will work.
 
 Add them to your `connect` function:
 
@@ -91,7 +86,7 @@ Add them to your `connect` function:
 export default connect(mapStateToProps, mapActionsToProps)(TodoList)
 ```
 
-Now accept `props` as an argument in the `TodoList` component, your final component should look like this:
+Now, accept `props` as an argument in the `TodoList` component. Your final component should look like this:
 
 ```jsx
 import React from 'react'
@@ -131,9 +126,9 @@ function App() {
 export default App
 ```
 
-Now open your browser dev tools and take a look at the console, you should the our redux store being printed!
+Now, open your browser dev tools and take a look at the console. You should see our Redux store being printed!
 
-That's all fine and good, however it's of no use to use just sitting in the console, we want to actually use this information. In the `mapStateToProps` function, return an object with `todoState` as a key and `state.todoState` as a value:
+That's all fine and good, however, it's of no use to us just sitting in the console. We want to actually use this information. In the `mapStateToProps` function, return an object with `todoState` as a key and `state.todoState` as a value:
 
 ```js
 const mapStateToProps = (state) => {
@@ -144,9 +139,9 @@ const mapStateToProps = (state) => {
 }
 ```
 
-Remove the console log from the `mapStateToProps` function and console log props in the `TodoList` component. Refresh the page and you should now only see the `todoState` being logged to the console.
+Remove the console log from the `mapStateToProps` function and console log props in the `TodoList` component. Refresh the page and you will now only see the `todoState` being logged to the console.
 
-Let's display some todos on our page, in the `TodoList` component `map` through `props.todos` and return an `li` with each todo:
+Let's display some todos on our page. In the `TodoList` component, `map` through `props.todos` and return an `li` with each todo:
 
 ```jsx
 const TodoList = (props) => {
@@ -161,9 +156,9 @@ const TodoList = (props) => {
 }
 ```
 
-One small problem, we don't have any todos in state right now, our array is empty, let's add some!
+One small problem: we don't have any todos in state right now so our array is empty. Let's add some!
 
-In your `TodoReducer` add a todo to the `todos` state:
+In your `TodoReducer`, add a todo to the `todos` state:
 
 ```js
 const initialState = {
@@ -172,13 +167,15 @@ const initialState = {
 }
 ```
 
-Now if you refresh your page you should see a list appear. Much better!
+Now, if you refresh your page you should see a list appear. Much better!
 
 We've successfully read information from our Redux store!
 
-### Linking Actions To Our Component
+![Loud Noises](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2F126CZqbY33wNgc%2Fgiphy.gif&f=1&nofb=1)
 
-In the last part we created some actions to use later on. That time has come!
+### Linking Actions to Our Component
+
+In the last part, we created some actions to use later on. That time has come!
 
 Add the following to your `TodoForm` file we created earlier:
 
@@ -210,7 +207,7 @@ Import this component into the `TodoList` component:
 import TodoForm from './TodoForm'
 ```
 
-Use it right above where we are mapping through the todos:
+We'll use it right above where we are mapping through the todos:
 
 ```jsx
 <div>
@@ -233,7 +230,7 @@ const handleSubmit = (event) => {
 
 We'll use them as helper methods to handle our form.
 
-Pass them in as props to our `TodoForm`, also pass in `newTodo` which we'll get from our `todoState`:
+Pass them in as props to our `TodoForm`. Also pass in `newTodo` which we'll get from our `todoState`:
 
 ```jsx
 const TodoList = (props) => {
@@ -260,9 +257,11 @@ const TodoList = (props) => {
 }
 ```
 
-Now we're ready to start using our redux actions!
+![Brick Killed A Guy](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fj9djzcMmzg8ow%2Fgiphy.gif&f=1&nofb=1)
 
-Import the actions from `TodoActions.js`, remember to use destructuring syntax!
+Now, we're ready to start using our Redux actions!
+
+Import the actions from `TodoActions.js`. Remember to use destructuring syntax!
 
 ```js
 import {
@@ -272,7 +271,8 @@ import {
 } from '../store/actions/TodoActions'
 ```
 
-Now the fun part, mapping these actions to props.
+Now for the fun part: mapping these actions to props.
+
 In the `mapActionsToProps` function, modify your return statement to the following:
 
 ```js
@@ -285,13 +285,14 @@ const mapActionsToProps = (dispatch) => {
 }
 ```
 
-Break down:
-
-- We set up object keys with what we want these functions to be called
-- We set the values to a callback function, if we don't react has no idea that these are functions
+Let's break that down:
+- We set up object keys with what we want these functions to be called.
+- We set the values to a callback function. If we don't, React has no idea that these are functions.
 - We return a `dispatch` function that accepts the action we want to perform. Dispatch is important here!
 
-The `dispatch` function is telling redux to perform this action to update our state. This is how redux can keep track of what function performed what and allows us to build modularity into our applications.
+The `dispatch` function is telling Redux to perform this action to update our state. This is how Redux can keep track of what function performed what and allows us to build modularity into our applications.
+
+![Angry](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.reactiongifs.com%2Fwp-content%2Fuploads%2F2013%2F10%2FAnchorman-snarling.gif&f=1&nofb=1)
 
 We can now use these functions as props. In our helper methods we defined earlier, utilize the `addTodo` and `createTodo` function:
 
@@ -306,11 +307,11 @@ const handleSubmit = (event) => {
 }
 ```
 
-Now try typing in the form and submitting it.
-Your new todo should be added to the todos state!
-You can observe these changes through the redux devtools. Here you can see which action type is being utilized and if state get's updated, which state updated.
+Now, try typing in the form and submitting it. Your new todo should be added to the todos state!
 
-Only one small problem here, our form field is never being cleared out, let's fix this in our `TodoReducer`:
+You can observe these changes through the React devtools. Here, you can see which action type is being utilized and if state gets updated. We can also see which state updated.
+
+One small problem here: our form field is never being cleared out. Let's fix this in our `TodoReducer`:
 
 ```js
     case ADD_TODO:
@@ -319,8 +320,8 @@ Only one small problem here, our form field is never being cleared out, let's fi
 
 The field should now be cleared every time we add a new todo!
 
-Here's the final `TodoList` component:
-
+<details><summary><strong>Here's the final `TodoList` component:</strong></summary>
+  
 ```js
 import React from 'react'
 import { connect } from 'react-redux'
@@ -375,8 +376,10 @@ const mapActionsToProps = (dispatch) => {
 export default connect(mapStateToProps, mapActionsToProps)(TodoList)
 ```
 
-Heres the final `TodoReducer`:
+</details>
 
+<details><summary><strong>Heres the final `TodoReducer`:</strong></summary>
+  
 ```js
 import { ADD_TODO, NEW_TODO, REMOVE_TODO } from '../types'
 
@@ -401,12 +404,24 @@ const TodoReducer = (state = initialState, action) => {
 export default TodoReducer
 ```
 
-## You Do
+</details>
 
-- Implement the removeTodo action, **Hint**: you can perform logic in the reducers!
-- Create your own `markComplete` action. You should be able to mark a todo as complete, you may need to change the data type of `newTodo` in order to get this to work.
+![Amazing](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F8f%2Fd2%2Fcd%2F8fd2cda60f9669467ae76fb34b227525.gif&f=1&nofb=1)
+
+## You Do
+- Implement the removeTodo action. **Hint**: you can perform logic in the reducers!
+- Create your own `markComplete` action. You should be able to mark a todo as complete. You may need to change the data type of `newTodo` in order to get this to work.
 - Implement a way to sort todos by completion.
 
 ## Bonus
+- Create a favoriting feature for your todos. Create a separate component and connect it to your store. You'll need a new type and action. You should be able to remove this favorite as well.
 
-Create a favoriting feature for your todos, create a separate component and connect it to your store. You'll need a new type and action. You should be able to remove this favorite as well.
+## Recap
+We finished up our ToDo list! We learned how we can map our state and our actions to props so that we can use them throughout our application!
+
+![yay](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FtLQfm7dmGqxfa%2Fgiphy.gif&f=1&nofb=1)
+
+## Resources
+- [Intro to Redux](https://github.com/SEI-R-1-25/u4_lesson_react_redux_intro)
+- [Redux Reducers](https://github.com/SEI-R-1-25/u4_lesson_redux_reducers)
+- [Redux Actions & Types](https://github.com/SEI-R-1-25/u4_lesson_redux_actions_types)
