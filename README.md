@@ -422,7 +422,7 @@ We finished up our ToDo list! We learned how we can map our state and our action
 ![yay](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FtLQfm7dmGqxfa%2Fgiphy.gif&f=1&nofb=1)
 
 ## Resources
-- [Intro to Redux](https://github.com/SEI-R-1-25/u4_lesson_react_redux_intro)
-- [Redux Reducers](https://github.com/SEI-R-1-25/u4_lesson_redux_reducers)
-- [Redux Actions & Types](https://github.com/SEI-R-1-25/u4_lesson_redux_actions_types)
+- [Intro to Redux](https://github.com/SEI-R-4-26/u4_lesson_redux_intro)
+- [Redux Reducers](https://github.com/SEI-R-4-26/u4_lesson_redux_reducers)
+- [Redux Actions & Types](https://github.com/SEI-R-4-26/u4_lesson_redux_actions_types)
 - [Keep a Tight Perimeter](https://youtu.be/ipsPgNEmAXI)
