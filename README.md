@@ -86,7 +86,7 @@ Add them to your `connect` function:
 export default connect(mapStateToProps, mapActionsToProps)(TodoList)
 ```
 
-Now, accept `props` as an argument in the `TodoList` component. Your final component should look like this:
+Now, accept `props` as an argument in the `TodoList` component. Your final component should look like this (Yes! Our new Map functions are written out of scope of our main component. This is because it is going to work with the information being mapped):
 
 ```jsx
 import React from 'react'
